@@ -61,7 +61,7 @@ jobs:
         run: |
           cd android
           mvn compile
-          mvn test -P sample-local-test
+          mvn test -P sample-local-test -D"browserstack.app"="./LocalSample.apk"
       - name: Run android mvn profile sample-test
         run: |
           cd android
@@ -76,7 +76,7 @@ jobs:
         run: |
           cd ios
           mvn compile
-          mvn test -P sample-local-test
+          mvn test -P sample-local-test -D"browserstack.app"="./LocalSample.ipa"
       - name: Run ios mvn profile sample-test
         run: |
           cd ios

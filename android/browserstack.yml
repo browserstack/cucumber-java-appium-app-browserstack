@@ -26,8 +26,8 @@ framework: cucumber-testng
 
 source: cucumber-java:appium-sample-main:v1.0
 
-# app: ./WikipediaSample.apk
-app: ./LocalSample.apk #For running local tests
+app: ./WikipediaSample.apk
+# app: ./LocalSample.apk #For running local tests
 
 # =======================================
 # Platforms (Browsers / Devices to test)
