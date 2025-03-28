@@ -82,6 +82,22 @@ jobs:
           cd ios
           mvn compile
           mvn test -P sample-test
+      - name:  Run gradle task for android  
+        run: |
+          cd android
+          gradle clean sampleTest
+      - name:  Run gradle task sample-local-test for android  
+        run: |
+          cd android
+          gradle clean sampleLocalTest -D"browserstack.app"="./LocalSample.apk"  
+      - name:  Run gradle task for ios  
+        run: |
+          cd ios
+          gradle clean sampleTest
+      - name:  Run gradle task sample-local-test for ios  
+        run: |
+          cd ios
+          gradle clean sampleLocalTest -D"browserstack.app"="./LocalSample.ipa"      
       - if: always()
         uses: actions/github-script@98814c53be79b1d30f795b907e553d8679345975
         id: status-check-completed
