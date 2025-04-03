@@ -14,11 +14,11 @@ This repository demonstrates how to run Appium tests in Cucumber Testng on Brows
         - For Windows, download latest java version from [here](https://java.com/en/download/) and run the installer executable
         - For Mac and Linux, run `java -version` to see what java version is pre-installed. If you want a different version download from [here](https://java.com/en/download/)
 
-2. Maven
+2. Maven (Only required if using Maven as the build tool)
    - If Maven is not downloaded, download it from [here](https://maven.apache.org/download.cgi)
    - For installation, follow the instructions [here](https://maven.apache.org/install.html)
 
-3. Gradle
+3. Gradle (Only required if using Gradle as the build tool)
   - If Gradle is not downloaded, download it from [here](https://gradle.org/releases/)  
   - For installation, follow the instructions [here](https://gradle.org/install/) 
 
@@ -46,8 +46,14 @@ Getting Started with Appium tests in Cucumber TestNg on BrowserStack couldn't be
 ### **Run Sample test :**
 
 - Switch to one of the following directories: [Android examples](android) or [iOS examples](ios)
-- Run the following maven command `mvn test -P sample-test` to run in maven enviroment.
-- Run the following gradle command `gradle clean sampleTest` to run in gradle enviroment.
+- **For Maven:** Run the following command to execute tests in the Maven environment:  
+    ```sh
+    mvn test -P sample-test
+    ```
+- **For Gradle:** Run the following command to execute tests in the Gradle environment:  
+    ```sh
+    gradle clean sampleTest
+    ```
 
 ### **Use Local testing for apps that access resources hosted in development or testing environments :**
 
@@ -55,8 +61,16 @@ Getting Started with Appium tests in Cucumber TestNg on BrowserStack couldn't be
   ```
   browserstackLocal: true
   ```
-- You can use the `LocalSample` app provided in both folder [Android examples](android) or [iOS examples](ios) to run your test. Change the app parameter in the `browserstack.yml` file and run the tests with the following command: `mvn test -P sample-local-test`
+- You can use the `LocalSample` app provided in both folder [Android examples](android) or [iOS examples](ios) to run your test. Change the app parameter in the `browserstack.yml` file.
 
+- **For Maven:** Run the following command to execute tests in the Maven environment:  
+    ```sh
+    mvn test -P sample-local-test
+    ```
+- **For Gradle:** Run the following command to execute tests in the Gradle environment:  
+    ```sh
+    gradle clean sampleLocalTest
+    ```
 
 **Note**: If you are facing any issues, refer [Getting Help section](#Getting-Help)
 
