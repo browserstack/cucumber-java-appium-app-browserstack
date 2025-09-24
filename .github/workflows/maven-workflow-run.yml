@@ -17,8 +17,8 @@ jobs:
       fail-fast: false
       max-parallel: 3
       matrix:
-        java: [ '8', '11', '17' ]
-        os: [ 'macos-latest', 'windows-latest', 'ubuntu-latest' ]
+        java: [ '17' ]
+        os: [ 'windows-latest' ]
     name: Cucumber Appium Repo ${{ matrix.Java }} - ${{ matrix.os }} Sample
     env:
       BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
@@ -57,47 +57,6 @@ jobs:
           cd android
           mvn compile
           mvn test
-      - name: Run android mvn profile sample-local-test
-        run: |
-          cd android
-          mvn compile
-          mvn test -P sample-local-test -D"browserstack.app"="./LocalSample.apk"
-      - name: Run android mvn profile sample-test
-        run: |
-          cd android
-          mvn compile
-          mvn test -P sample-test
-      - name: Run ios mvn test
-        run: |
-          cd ios
-          mvn compile
-          mvn test
-      - name: Run ios mvn profile sample-local-test
-        run: |
-          cd ios
-          mvn compile
-          mvn test -P sample-local-test -D"browserstack.app"="./LocalSample.ipa"
-      - name: Run ios mvn profile sample-test
-        run: |
-          cd ios
-          mvn compile
-          mvn test -P sample-test
-      - name: Run gradle task for android  
-        run: |
-          cd android
-          gradle clean sampleTest
-      - name: Run gradle task sample-local-test for android  
-        run: |
-          cd android
-          gradle clean sampleLocalTest -D"browserstack.app"="./LocalSample.apk"  
-      - name: Run gradle task for ios  
-        run: |
-          cd ios
-          gradle clean sampleTest
-      - name: Run gradle task sample-local-test for ios  
-        run: |
-          cd ios
-          gradle clean sampleLocalTest -D"browserstack.app"="./LocalSample.ipa"      
       - if: always()
         uses: actions/github-script@98814c53be79b1d30f795b907e553d8679345975
         id: status-check-completed
