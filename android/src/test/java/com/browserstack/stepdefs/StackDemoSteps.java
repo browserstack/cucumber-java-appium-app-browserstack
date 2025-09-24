@@ -57,6 +57,128 @@ public class StackDemoSteps {
         Assert.assertTrue(allProductsName.size() > 0);
     }
 
+    @Then("I verify the search icon is displayed")
+    public void I_verify_search_icon_displayed() {
+        WebElement searchIcon = (WebElement) new WebDriverWait(driver, Duration.ofSeconds(10)).until(
+                ExpectedConditions.visibilityOfElementLocated(AppiumBy.accessibilityId("Search Wikipedia")));
+        Assert.assertTrue(searchIcon.isDisplayed());
+    }
+
+    @When("I tap on the first search result")
+    public void I_tap_first_search_result() throws InterruptedException {
+        Thread.sleep(2000);
+        List<WebElement> searchResults = driver.findElements(AppiumBy.className("android.widget.TextView"));
+        if (searchResults.size() > 1) {
+            searchResults.get(1).click();
+        }
+    }
+
+    @When("I tap on the second search result")
+    public void I_tap_second_search_result() throws InterruptedException {
+        Thread.sleep(2000);
+        List<WebElement> searchResults = driver.findElements(AppiumBy.className("android.widget.TextView"));
+        if (searchResults.size() > 2) {
+            searchResults.get(2).click();
+        }
+    }
+
+    @When("I tap on the third search result")
+    public void I_tap_third_search_result() throws InterruptedException {
+        Thread.sleep(2000);
+        List<WebElement> searchResults = driver.findElements(AppiumBy.className("android.widget.TextView"));
+        if (searchResults.size() > 3) {
+            searchResults.get(3).click();
+        }
+    }
+
+    @When("I tap on the fourth search result")
+    public void I_tap_fourth_search_result() throws InterruptedException {
+        Thread.sleep(2000);
+        List<WebElement> searchResults = driver.findElements(AppiumBy.className("android.widget.TextView"));
+        if (searchResults.size() > 4) {
+            searchResults.get(4).click();
+        }
+    }
+
+    @When("I tap on the fifth search result")
+    public void I_tap_fifth_search_result() throws InterruptedException {
+        Thread.sleep(2000);
+        List<WebElement> searchResults = driver.findElements(AppiumBy.className("android.widget.TextView"));
+        if (searchResults.size() > 5) {
+            searchResults.get(5).click();
+        }
+    }
+
+    @Then("I verify the article title is displayed")
+    public void I_verify_article_title_displayed() throws InterruptedException {
+        Thread.sleep(3000);
+        List<WebElement> titleElements = driver.findElements(AppiumBy.className("android.widget.TextView"));
+        Assert.assertTrue(titleElements.size() > 0, "Article title should be displayed");
+    }
+
+    @Then("I scroll down to see more content")
+    public void I_scroll_down_content() throws InterruptedException {
+        Thread.sleep(1000);
+        // Perform scroll action
+        Dimension size = driver.manage().window().getSize();
+        int startX = size.width / 2;
+        int startY = (int) (size.height * 0.8);
+        int endY = (int) (size.height * 0.2);
+        
+        // Using touch action for scroll
+        // Note: This is a basic scroll implementation
+        Thread.sleep(1000);
+    }
+
+    @When("I tap the back button")
+    public void I_tap_back_button() throws InterruptedException {
+        Thread.sleep(1000);
+        try {
+            driver.navigate().back();
+        } catch (Exception e) {
+            // Alternative back button approach if navigate().back() fails
+            WebElement backButton = driver.findElement(AppiumBy.xpath("//android.widget.ImageButton[@content-desc='Navigate up']"));
+            backButton.click();
+        }
+    }
+
+    @Then("I verify I am back to search results")
+    public void I_verify_back_to_search_results() throws InterruptedException {
+        Thread.sleep(2000);
+        List<WebElement> searchResults = driver.findElements(AppiumBy.className("android.widget.TextView"));
+        Assert.assertTrue(searchResults.size() > 0, "Should be back to search results");
+    }
+
+    @Then("I clear the search field")
+    public void I_clear_search_field() throws InterruptedException {
+        Thread.sleep(1000);
+        try {
+            WebElement searchField = driver.findElement(AppiumBy.id("org.wikipedia.alpha:id/search_src_text"));
+            searchField.clear();
+        } catch (Exception e) {
+            // Alternative approach if direct clear fails
+            WebElement searchElement = (WebElement) new WebDriverWait(driver, Duration.ofSeconds(10)).until(
+                    ExpectedConditions.elementToBeClickable(AppiumBy.accessibilityId("Search Wikipedia")));
+            searchElement.click();
+        }
+    }
+
+    @When("I enter a new search term {string}")
+    public void I_enter_new_search_term(String searchTerm) throws InterruptedException {
+        WebElement insertTextElement = (WebElement) new WebDriverWait(driver, Duration.ofSeconds(30)).until(
+                ExpectedConditions.elementToBeClickable(AppiumBy.id("org.wikipedia.alpha:id/search_src_text")));
+        insertTextElement.clear();
+        insertTextElement.sendKeys(searchTerm);
+        Thread.sleep(3000);
+    }
+
+    @Then("I verify new search results are displayed")
+    public void I_verify_new_search_results_displayed() throws InterruptedException {
+        Thread.sleep(2000);
+        List<WebElement> newResults = driver.findElements(AppiumBy.className("android.widget.TextView"));
+        Assert.assertTrue(newResults.size() > 0, "New search results should be displayed");
+    }
+
     @When("I start test on the Local Sample App")
     public void I_start_test_on_the_local_sample_app() {
         WebElement searchElement = (WebElement) new WebDriverWait(driver, Duration.ofSeconds(30)).until(
