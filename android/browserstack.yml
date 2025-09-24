@@ -35,15 +35,9 @@ app: ./WikipediaSample.apk
 # Platforms object contains all the browser / device combinations you want to test on.
 # Entire list available here -> (https://www.browserstack.com/list-of-browsers-and-platforms/automate)
 platforms:
-  - deviceName: Samsung Galaxy S22 Ultra
-    platformVersion: 12.0
-    platformName: android
-  - deviceName: Samsung Galaxy S21
-    platformVersion: 11.0
-    platformName: android
-  - deviceName: Google Pixel 6 Pro
-    platformVersion: 12.0
-    platformName: android
+  - platformName: android
+    platformVersion: 1[345]|15.0
+    deviceName: Samsung Galaxy S.*|Google Pixel 9.*
 
 # =======================
 # Parallels per Platform
