@@ -62,7 +62,7 @@ parallelsPerPlatform: 15
 # ==========================================
 # Set browserStackLocal to true if your website under test is not accessible publicly over the internet
 # Learn more about how BrowserStack Local works here -> https://www.browserstack.com/docs/automate/selenium/local-testing-introduction
-browserstackLocal: true # <boolean> (Default false)
+browserstackLocal: false # <boolean> (Default false)
 #browserStackLocalOptions:
 #Options to be passed to BrowserStack local in-case of advanced configurations
 #  localIdentifier: # <string> (Default: null) Needed if you need to run multiple instances of local.
@@ -73,4 +73,6 @@ browserstackLocal: true # <boolean> (Default false)
 # Debugging features
 # ===================
 debug: false # <boolean> # Set to true if you need screenshots for every selenium command ran
+logLevel : debug
 networkLogs: false # <boolean> Set to true to enable HAR logs capturing
+testObservability: true
